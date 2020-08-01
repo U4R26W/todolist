@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Todo Lists</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+  <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body class="wrapper">
+
+  <!-- 最初のローディング表示 -->
+  <section id="loading" class="view">
+    <i class="initial-loading-icon fas fa-spinner"></i>
+  </section>
+  <!-- /#loading -->
+
+  <!--ログイン画面-->
+  <section id="login" class="view">
+    
+    <nav class="navbar navbar-dark bg-dark">
+      <a href="#" class="navbar-brand">Todo Lists</a>
+    </nav>
+    
+    <div class="container">
+      <div class="row">
+        
+        <div id="login-box" class="offset-1 col-10 offset-sm-2 col-sm-8 offset-lg-3 col-lg-6">
+        <h2>ログイン</h2>
+        <form id="login-form">
+          
+          <div class="form-group">
+            <label for="user-mail" class="col-form-label">
+              メールアドレス
+            </label>
+            <div>
+              <input type="email" id="user-mail" class="form-control use_icon" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="user-pass" class="col-form-label">
+              パスワード
+            </label>
+            <div>
+              <input type="password" id="user-pass" class="form-control use_icon" required>
+            </div>
+          </div>
+          
+          <div id="alert" class="alert alert-danger"></div>
+          
+          
+          <div class="row mt-4">
+            
+            <div class="form-group col-md-8">
+              <button id="login-button" type="submit" class="btn btn-success btn-block">
+                ログイン
+              </button>
+            </div>
+            
+            <div class="form-group col-md-4">
+              <button id="sign-up" type="button" class="btn btn-outline-secondary btn-block">
+                新規登録
+              </button>
+            </div>
+            
+          </div>
+          
+        </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--ログイン画面-->
+
+  <!--メイン画面-->
+  <section id="main" class="view">
+    
+  <nav class="navbar navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">Todo Lists</a>
+    <button type="button" id="logout-button" class="btn btn-success">ログアウト</button>
+  </nav>
+  
+    <div class="container">
+
+      <div class="row">
+        <div class="col-12 mt-4 offset-lg-2 col-lg-8 mt-lg-4">
+          
+          <div>
+            <ul class="tabs-menu">
+              <li><a href="#tabs-all">すべて</a></li>
+              <li><a href="#tabs-incomplete">未完了</a></li>
+              <li><a href="#tabs-completed">完了済</a></li>
+            </ul>
+          </div>
+          
+          <section class="tabs-content overflow-auto" style="height:506px;">
+            <ul id="tabs-all" class="list"></ul>
+            <ul id="tabs-incomplete" class="list"></ul>
+            <ul id="tabs-completed" class="list"></ul>
+          </section>
+
+          <form id="comment-form" class="input-group mt-2 mb-4">
+            <input type="text" id="comment-form_text" placeholder="新規Todoを追加" class="form-control">
+            <!--<input type="date" name="期限">-->
+
+            <div class="input-group-append">
+              <input type="submit" value="送信" class="btn btn-dark">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--メイン画面-->
+
+  <!--テンプレート-->
+  <li class="todo-template todo-body">
+    <span class="handle">::</span>
+    <i class="fas fa-check-circle"></i>
+    
+    <div class="todo-text inline-block "></div>
+    
+    <button type="button" class="remove-button btn btn-danger button-right"><i class="fas fa-trash-alt"></i></button>
+    <input type="button" class="complete-button btn button-right" value="完了する">
+    <div class="post-date"></div>
+  </li>
+  <!--テンプレート-->
+
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "xxx",
+      authDomain: "xxx",
+      databaseURL: "xxx",
+      projectId: "xxx",
+      storageBucket: "xxx",
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <!--jquery-->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+  <!--bootstrap-->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+  <!--ライブラリ-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+  <script src="js/Sortable.min.js"></script>
+
+  <script src="js/main.js"></script>
+
+  <!--fontawesome-->
+  <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+
+</body>
+
+</html>
